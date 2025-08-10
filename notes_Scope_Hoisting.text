@@ -1,0 +1,94 @@
+JavaScript is a dynamically typed language.
+
+->Type Checking at Runtime: The data type of a variable in JavaScript is determined at runtime, not at compile time.
+This means you don't explicitly declare the type of a variable when you create it.
+example:
+    let myVariable = 10; // myVariable is a number
+    myVariable = "hello"; // myVariable can now be a string
+
+<---------Memory-------->
+primitive take space in (stack)
+non-primitive/ reference datatype in (heap);
+
+
+SCOPE of a variable
+------------------------------
+ Global scope
+var globalVar = "I am global";
+
+function demo() {
+    // Function scope
+    var funcVar = "I am inside function";
+    console.log(globalVar); // ✅ Accessible
+}
+console.log(funcVar); // ❌ Error
+
+if (true) {
+    let blockVar = "I am block scoped";
+}
+console.log(blockVar); // ❌ Error
+
+
+---------------------------------------
+Function Scope
+A variable is accessible only inside the function in which it is declared.
+var is function-scoped.
+If declared outside a function, var becomes global.
+Example:
+    function myFunc() {
+        var name = "Desh";
+        console.log(name); // ✅ Accessible here
+    }
+    console.log(name); // ❌ ReferenceError
+
+----------------------------
+ Block Scope
+A variable is accessible only inside the block { } where it is declared.
+let and const are block-scoped.
+Blocks can be from loops, conditionals, or even { } alone.
+Example:
+    if (true) {
+        let age = 21;
+        const country = "India";
+        console.log(age, country); // ✅ Accessible
+    }
+    console.log(age); // ❌ ReferenceError
+----------------------------------
+Lexical Scope
+JavaScript uses lexical (static) scoping, meaning:
+Inner functions can access variables from outer functions.
+But outer functions cannot access variables from inner functions.
+    function outer() {
+        let outerVar = "outer";
+        function inner() {
+            console.log(outerVar); // ✅ Can access
+        }
+        inner();
+    }
+    outer();
+++++++++++++++++++++++++++++++++++++++
+
+
+Function hoisting
+-----------------
+*Function hoisting in JavaScript means that function declarations are moved (“hoisted”) 
+to the top of their scope before the code runs, so
+ you can call them before they are written in the code.
+
+1 . Function Declaration Hoisting
+
+    greet(); // ✅ Works, because it's hoisted
+
+    function greet() {
+        console.log("Hello!");
+    }
+
+2. Function Expression Hoisting
+
+When you assign a function to a variable (var, let, or const),
+only the variable is hoisted, not the function body.
+
+    sayHi(); // ❌ Error if using let/const, undefined if using var
+    var sayHi = function () {
+        console.log("Hi!");
+    };
