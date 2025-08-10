@@ -91,4 +91,23 @@ only the variable is hoisted, not the function body.
     sayHi(); // ❌ Error if using let/const, undefined if using var
     var sayHi = function () {
         console.log("Hi!");
-    };
+    }
+
+========================================================
+
+Immediately Invoked Function Expressions 
+----------------------------------------
+    (function () {
+        console.log("I run immediately!");
+    })();
+The first parentheses (...) wrap the function to make it an expression (not a declaration).
+
+The second parentheses () immediately invoke it.
+
+2. Why use IIFE?
+    1.Avoid polluting global scope
+    Variables inside an IIFE are scoped to that function, not accessible outside.
+    2.Execute code once without needing to call it later.
+    3.Create a private scope for data.
+
+---------------------------------------------------------
