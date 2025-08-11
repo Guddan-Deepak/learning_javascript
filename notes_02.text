@@ -1,0 +1,89 @@
+Operators
+----------
+# nullish Coalescing Operator(??) : null, undefined
+
+let val1;
+val1 = 5 ?? 10
+
+    op:    val1 => 5
+
+Syntax: let result = value ?? defaultValue;
+How it works:
+    If value is null or undefined, result becomes defaultValue.
+    Otherwise, result is just value.
+
+    let a = null;
+    let b = a ?? "Default";
+    console.log(b); // "Default"
+    let c = 0;
+    let d = c ?? 5;
+    console.log(d); // 0 (because 0 is not null/undefined)
+
+--------------------------------------------------------------------
+
+
+Object: Keys are strings (or symbols) only. Other types get converted to strings.
+
+Map: Keys can be any value — strings, numbers, booleans, objects, functions, NaN, etc.
+
+        let obj = {};
+        obj[1] = "one";      // key converted to "1"
+        obj[{a: 1}] = "obj"; // key becomes "[object Object]"
+
+Syntax: let map = new Map();
+        map.set(1, "one");         // key is number
+        map.set({a: 1}, "obj");    // key is object reference
+
+2. Order of Keys
+        Object: No guaranteed order (but in modern JS, integer-like keys are sorted, others follow insertion order).
+
+        Map: Keys always preserve insertion order.
+
+3. Size Retrieval
+        Object: No direct size property — need Object.keys(obj).length.
+
+        Map: Has .size property.
+
+
+iterating in maps
+for( const [key,value] of map){
+    console.log( key,'==>', value);
+}
+
+--------------------------------------------------------------
+Filter(callback)
+-----
+const nums=[1,2,3,4,5,6,7,8]
+const newNums =nums.filter( (num) => num>4)
+console.log(newNums);  //[ 5, 6, 7, 8 ]
+
+
+const newarr =nums.filter( (num) => {
+    return num>4                //we have to use return keyword to explicitly
+                                //return the value
+})
+console.log(newarr);  //[ 5, 6, 7, 8 ]
+--------------------------------------------------
+2. map(callback) — Transform each element
+        Purpose: Apply a function to each item and return a new array of transformed values.
+        Length of array stays the same.
+
+syntax same as filter
+example: 
+        let numbers = [1, 2, 3];
+        let doubled = numbers.map(num => num * 2);
+
+        console.log(doubled); // [2, 4, 6]
+        console.log(numbers); // [1, 2, 3] (unchanged)
+
+
+chaining in map:
+        let numbers = [1, 2, 3, 4];
+        let result = numbers            // First map: double the numbers
+                                        // Second map: convert to strings with "!"
+        .map(num => num * 2)
+        .map(num => num + "!");
+
+        console.log(result); // [ '2!', '4!', '6!', '8!' ]
+---------------------------------------------------
+3. reduce()
