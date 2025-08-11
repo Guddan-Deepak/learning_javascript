@@ -1,0 +1,38 @@
+two function for inserting an element in a list
+we don't use innerHTML as it has through whole dom tree
+to fetch the value
+----------------------------------------
+
+<script>
+    function addLanguage(langName) {
+        const li=document.createElement('li')
+        li.innerHTML = `${langName}`
+        document.querySelector('.language').appendChild(li)
+    }
+    addLanguage ("python")
+    addLanguage ("c++")
+
+    function addOptiLanguage(langname){
+        const li =document.createElement('li');
+        li.appendChild(document.createTextNode(<langname>))
+        document.querySelector('.language').appendChild(li)
+    }
+    addOptiLanguage("typeScript")
+</script>
+--------------------------------------------
+1. Using innerHTML
+li.innerHTML = `${langName}`;
+    What happens: Browser parses the string as HTML.
+    Pros:
+    Can insert HTML tags (bold, links, etc.).
+    Cons:
+    Slightly slower (browser must parse HTML).
+    If content comes from user input, it can cause XSS security risks.
+    Replaces any existing child nodes inside that element.
+
+2. Using createTextNode + appendChild
+    What happens: Adds plain text without parsing it as HTML.Pros:
+    Safer (no HTML injection).
+    Slightly more efficient (no HTML parsing step).
+    Cons:
+    Cannot insert HTML formatting — everything is treated as plain text.
