@@ -32,4 +32,8 @@ const newarr =nums.filter( (num) => {
 })
 console.log(newarr);  //[ 5, 6, 7, 8 ]
 
-nums.map()
+const total = nums.reduce( (accumulator,current) =>{
+    return accumulator + current;
+},0);
+
+console.log(`the total sum of arary is ${total}`);

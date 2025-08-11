@@ -87,3 +87,6 @@ chaining in map:
         console.log(result); // [ '2!', '4!', '6!', '8!' ]
 ---------------------------------------------------
 3. reduce()
+array.reduce((accumulator, currentValue, index, array) => {
+    // return updated accumulator
+}, initialValue);
