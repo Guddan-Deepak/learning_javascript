@@ -83,3 +83,4 @@ Event Propagation in JavaScript:
 
     Bubbling is the default when using addEventListener without\
     the third argument or with false.
+---------------------------------------------------------------------------
