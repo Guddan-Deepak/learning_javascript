@@ -1,0 +1,85 @@
+✅ Basic Event Properties
+**type**
+The name of the event.
+Example: "click", "keydown".
+Access: `event.type`.
+
+**timeStamp**
+The time (in ms) since the page started loading when the event was created.
+Access: `event.timeStamp`.
+
+**defaultPrevented**
+Boolean: true if `event.preventDefault()` was called, else false.
+Access: `event.defaultPrevented`.
+
+---
+
+✅ Target & Related Elements
+**target**
+The element on which the event occurred (origin).
+Access: `event.target`.
+
+**toElement** *(Deprecated in modern browsers)*
+In mouse events: element the mouse pointer moved to.
+Use `relatedTarget` instead.
+Access: `event.toElement`.
+
+**srcElement** *(Old IE alias for target)*
+Use `event.target` instead.
+
+**currentTarget**
+The element whose event listener is currently handling the event (may differ from target if bubbling).
+Access: `event.currentTarget`.
+
+---
+
+✅ Mouse Position Properties
+**clientX & clientY**
+X/Y coordinates of the mouse pointer relative to the visible viewport (excluding scroll).
+Access: `event.clientX`, `event.clientY`.
+
+**screenX & screenY**
+X/Y coordinates relative to the entire physical screen.
+Access: `event.screenX`, `event.screenY`.
+
+---
+
+✅ Keyboard & Modifier Keys
+**altKey**
+true if Alt was pressed during the event.
+Access: `event.altKey`.
+
+**shiftKey**
+true if Shift was pressed during the event.
+Access: `event.shiftKey`.
+
+**ctrlKey**
+true if Ctrl was pressed during the event.
+Access: `event.ctrlKey`.
+
+**key**
+The actual key value pressed (e.g., "a", "Enter").
+Access: `event.key`.
+
+**keyCode** *(Deprecated)*
+Numeric code for the key pressed (e.g., 65 for "A").
+Use `event.key` instead.
+Access: `event.keyCode`.
+
+
+------------------------------------------------
+Event Propagation in JavaScript:
+
+✅ 1. Capturing Phase (Trickling down)
+    The event starts from the window, then document, then html,
+    then moves down through parent elements to the target element.
+
+    Capturing phase runs first if a listener is added with addEventListener
+    (type, listener, true) (the third argument is true).
+
+✅ 3. Bubbling Phase
+    After the target phase, the event bubbles up from the target
+    element to its ancestors (parent → grandparent → ... → document → window).
+
+    Bubbling is the default when using addEventListener without\
+    the third argument or with false.
